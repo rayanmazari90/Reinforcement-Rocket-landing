@@ -125,7 +125,7 @@ The first chart shows the episode reward and moving average of the reward as a f
 ![image](https://user-images.githubusercontent.com/55255975/233862829-17b400b6-be63-498a-ae27-d3c556424aa6.png)
 <p>
 The second chart shows the averaged rewards over a sliding window of size window1 as a function of the training episode number. The y-axis represents the average reward over the sliding window, and the x-axis represents the episode number. The blue line represents the reward smoothed out with a Savitzky-Golay filter of order 3 and window size window0. The orange line represents the averaged rewards over a sliding window of size window1. The shaded area represents the standard deviation of the averaged rewards. The purpose of this chart is to visualize the trend of the averaged reward over a longer time horizon and to see if the algorithm is improving over time.
-![image](https://user-images.githubusercontent.com/55255975/233862963-5b54fb1c-0037-4a28-93c7-dbd0442c42a0.png)
+
 <p>
 
 
