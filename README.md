@@ -1,5 +1,4 @@
-# RL_20
-
+# RL_18
 
 ## Assignement 21.01
 
@@ -122,7 +121,12 @@ to look at the logs run the following command in your terminal :
 </pre>
 
 
-MISSSING CHART EXPLANATION ....
+The first chart shows the episode reward and moving average of the reward as a function of the number of episodes trained. The y-axis represents the reward, and the x-axis represents the number of episodes. The blue line represents the episode reward, while the orange line represents the moving average of the reward over the last 50 episodes. The moving average is a way to smooth out the noise in the episode reward and to better visualize the trend of the reward over time.
+![image](https://user-images.githubusercontent.com/55255975/233862829-17b400b6-be63-498a-ae27-d3c556424aa6.png)
+<p>
+The second chart shows the averaged rewards over a sliding window of size window1 as a function of the training episode number. The y-axis represents the average reward over the sliding window, and the x-axis represents the episode number. The blue line represents the reward smoothed out with a Savitzky-Golay filter of order 3 and window size window0. The orange line represents the averaged rewards over a sliding window of size window1. The shaded area represents the standard deviation of the averaged rewards. The purpose of this chart is to visualize the trend of the averaged reward over a longer time horizon and to see if the algorithm is improving over time.
+![image](https://user-images.githubusercontent.com/55255975/233862901-5c39ec2d-2296-4ada-9237-146b40687f3d.png)
+
 
 ### 1.3 
 
