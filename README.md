@@ -135,5 +135,3 @@ Improving the average precision in the context of this assignment would involve 
 One approach to improving the performance could be to add more features to the observation space, which could provide the model with more information to make better decisions. Additionally, the reward function could be modified to incentivize the model to take actions that lead to a more precise landing or hovering, for example by penalizing large deviations from the target position or velocity.
 
 Another approach could be to modify the action space to allow for more fine-grained control over the rocket's movement. For example, instead of discrete actions for different levels of thrust, the model could be trained to output continuous values for thrust, allowing for more precise adjustments.
-
-Overall, improving the precision would require a careful analysis of the current model's performance and potential areas for improvement, followed by experimentation with different modifications and training strategies to see what leads to the best results.
