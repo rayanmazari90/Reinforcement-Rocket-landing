@@ -12,52 +12,46 @@ from gym import spaces
 import numpy as np
 from rocket import Rocket
 
+import gym
+from gym import spaces
+import numpy as np
+
+# Assuming you've already imported the Rocket class from the provided link
+
 class RocketEnv(gym.Env):
-    def __init__(self):
-        super(RocketEnv, self).__init__()
-        
-        # Set up action and observation spaces
-        self.action_space = spaces.Discrete(2) # Assuming 2 actions: 0 - no thrust, 1 - thrust
-        self.observation_space = spaces.Box(low=-float('inf'), high=float('inf'), shape=(4,), dtype=float)
-        
-        # Initialize the Rocket object
-        self.rocket = Rocket()
+    def __init__(self, max_steps,task,rocket_type, viewport_h , path_to_bg_img):
+        self.task= task
+        self.rocket_type=rocket_type
+        self.viewport_h= viewport_h
+        self.path_to_bg_img= path_to_bg_img
+        self.max_steps = max_steps
+        # Set up the action space
+        self.action_space = spaces.Discrete(2)
+        # Set up the observation space
+        self.observation_space = spaces.Box(low=0, high=1, shape=(3,), dtype=np.float32)
+        # Set up the reward range
+        self.reward_range = (-np.inf, np.inf)
+        # Set up the metadata
+        self.metadata = {}
 
-    def step(self, action):
-        # Execute one time step within the environment
-        self.rocket.update(action)
 
-        # Calculate reward and check if done
-        reward = self._calculate_reward()
-        done = self._is_done()
-
-        return self.rocket.state(), reward, done, {}
+        super(Rocket, object).__init__(max_steps, task=self.task, rocket_type=self.rocket_type, viewport_h=self.viewport_h, path_to_bg_img=self.path_to_bg_img)
 
     def reset(self):
-        # Reset the state of the environment to an initial state
-        self.rocket.reset()
-        return self.rocket.state()
+        return self.reset()
+
+    def step(self, action):
+        obs, reward, done, _ = self.step(action)
+        return obs, reward, done, {}
 
     def render(self, mode='human'):
-        # Render the environment to the screen
-        pass
+        self.render()
 
-    def _calculate_reward(self):
-        # Calculate the reward based on the current state
-        if self.rocket.landed():
-            return 100
-        elif self.rocket.crashed():
-            return -100
-        else:
-            return -1
-
-    def _is_done(self):
-        # Check if the episode is finished based on the current state
-        return self.rocket.landed() or self.rocket.crashed()
 
 if __name__ == "__main__":
-    
-    env = RocketEnv()
+    task = 'landing'
+    max_steps = 800
+    env = RocketEnv(max_steps, task='hover', rocket_type='falcon', viewport_h=768, path_to_bg_img=None)
     print('CHECK_ENV', 'OK' if check_env(env) is None else 'ERROR')
     print(env.observation_space)
     print(env.action_space)
